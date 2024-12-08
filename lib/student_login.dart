@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tuition/start.dart';
+import 'package:tuition/student_screens/enrolled_courses.dart';
 
 class StudentLogin extends StatefulWidget {
   const StudentLogin({super.key});
@@ -23,8 +24,8 @@ class _StudentLoginState extends State<StudentLogin> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.of(context)
-                  .pushReplacement(MaterialPageRoute(builder: (context) => const Start()));
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const Start()));
             },
             child: Container(
               alignment: Alignment.centerLeft,
@@ -96,24 +97,78 @@ class _StudentLoginState extends State<StudentLogin> {
           const SizedBox(
             height: 70,
           ),
-          Material(
-            elevation: 10.0,
-            shadowColor: Colors.black,
-            borderRadius: BorderRadius.circular(20),
-            child: Container(
-              height: 70,
-              width: 300,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: const Color(0xff007A70),
-              ),
-              child: const Text(
-                'Log In',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+          GestureDetector(
+            onTap: () {
+              if (emailController.text != 'mohamed@school.com' &&
+                  idController.text != '123') {
+                showDialog(
+                  context: context,
+                  builder: (context) => Dialog(
+                    child: Container(
+                      height: 250,
+                      width: 200,
+                      alignment: Alignment.center,
+                      child: Column(
+                        children: [
+                          const Padding(padding: EdgeInsets.all(20),
+                            child: Text('Please enter your email and ID correctly',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Container(
+                              height: 50,
+                              width: 100,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: const Color(0xff007A70),
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: const Text('Close',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+                return;
+              }
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => const EnrolledCourses()));
+            },
+            child: Material(
+              elevation: 10.0,
+              shadowColor: Colors.black,
+              borderRadius: BorderRadius.circular(20),
+              child: Container(
+                height: 70,
+                width: 300,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: const Color(0xff007A70),
+                ),
+                child: const Text(
+                  'Log In',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
