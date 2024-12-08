@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tuition/start.dart';
+import 'package:tuition/tutor_screens/classes.dart';
 
 class TutorLogin extends StatefulWidget {
   const TutorLogin({super.key});
@@ -146,6 +147,8 @@ class _TutorLoginState extends State<TutorLogin> {
                 );
                 return;
               }
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => const Classes()));
             },
             child: Material(
               elevation: 10.0,
