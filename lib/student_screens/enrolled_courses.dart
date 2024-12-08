@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,7 +20,8 @@ class EnrolledCourses extends StatelessWidget {
                 context: context,
                 barrierDismissible: false,
                 builder: (context) => AlertDialog(
-                  content: const Text('Are you sure?',
+                  content: const Text(
+                    'Are you sure?',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 25,
@@ -40,7 +40,8 @@ class EnrolledCourses extends StatelessWidget {
                         height: 50,
                         width: 100,
                         alignment: Alignment.center,
-                        child: const Text('No',
+                        child: const Text(
+                          'No',
                           style: TextStyle(
                             fontSize: 20,
                           ),
@@ -54,13 +55,13 @@ class EnrolledCourses extends StatelessWidget {
                         } else {
                           SystemNavigator.pop();
                         }
-
                       },
                       child: Container(
                         height: 50,
                         width: 100,
                         alignment: Alignment.center,
-                        child: const Text('Yes',
+                        child: const Text(
+                          'Yes',
                           style: TextStyle(
                             fontSize: 20,
                           ),
@@ -70,7 +71,6 @@ class EnrolledCourses extends StatelessWidget {
                   ],
                 ),
               );
-
             },
             child: Container(
               alignment: Alignment.centerLeft,
@@ -78,8 +78,50 @@ class EnrolledCourses extends StatelessWidget {
               child: const Icon(Icons.close),
             ),
           ),
+          const SizedBox(
+            height: 30,
+          ),
+          Container(
+            alignment: Alignment.center,
+            child: const Text(
+              'Enrolled Courses',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Expanded(
+            child: ListView(
+              children: List.generate(courses.length, (index) {
+                return Container(
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: const Color(0xff007A70),
+                  ),
+                  child: Text(courses[index],
+                    style: const TextStyle(
+                      fontSize: 25,
+                      color: Colors.white,
+                    ),
+                  ),
+                );
+              }),
+            ),
+          ),
         ],
       ),
     );
   }
 }
+
+List<String> courses = [
+  'Math',
+  'Physics',
+  'AI',
+  'ICT',
+  'Robotics',
+];
