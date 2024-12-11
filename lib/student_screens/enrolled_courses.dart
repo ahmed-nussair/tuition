@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tuition/student_screens/enrolled_course_details.dart';
 
 class EnrolledCourses extends StatelessWidget {
   const EnrolledCourses({super.key});
@@ -12,7 +12,7 @@ class EnrolledCourses extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(
-            height: 30,
+            height: 50,
           ),
           GestureDetector(
             onTap: () {
@@ -94,19 +94,40 @@ class EnrolledCourses extends StatelessWidget {
           Expanded(
             child: ListView(
               children: List.generate(courses.length, (index) {
-                return Container(
-                  alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: const Color(0xff007A70),
-                  ),
-                  child: Text(courses[index],
-                    style: const TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                    ),
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            EnrolledCourseDetails(courseName: courses[index])));
+                  },
+                  child: Stack(
+                    children: [
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        padding: const EdgeInsets.all(10),
+                        margin: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: const Color(0xff007A70),
+                        ),
+                        child: Text(
+                          courses[index],
+                          style: const TextStyle(
+                            fontSize: 25,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      const Positioned(
+                        top: 0.0,
+                        bottom: 0.0,
+                        right: 30,
+                        child: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
                   ),
                 );
               }),
