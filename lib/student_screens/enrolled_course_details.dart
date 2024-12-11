@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tuition/student_screens/enrolled_course_details_widgets/classes_widget.dart';
 import 'package:tuition/student_screens/enrolled_course_details_widgets/materials_widget.dart';
 
+import 'enrolled_course_details_widgets/recorded_lectures_widget.dart';
+
 class EnrolledCourseDetails extends StatefulWidget {
   final String courseName;
 
@@ -17,12 +19,15 @@ class EnrolledCourseDetails extends StatefulWidget {
 class _EnrolledCourseDetailsState extends State<EnrolledCourseDetails> {
   final int classes = 1;
   final int materials = 2;
+  final int recordedLectures = 3;
 
   late int currentState;
+  late bool attended;
 
   @override
   void initState() {
     currentState = 1;
+    attended = false;
     super.initState();
   }
 
@@ -66,6 +71,30 @@ class _EnrolledCourseDetailsState extends State<EnrolledCourseDetails> {
               fontWeight: FontWeight.bold,
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      attended = attended ? false : true;
+                    });
+                  },
+                  child: attended
+                      ? const Icon(Icons.check_box)
+                      : const Icon(Icons.check_box_outline_blank),
+                ),
+                const Text(
+                  'Attended Today',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const Divider(),
           Row(
             children: [
               // Classes Button
@@ -86,18 +115,18 @@ class _EnrolledCourseDetailsState extends State<EnrolledCourseDetails> {
                         : const Color(0xff30D5C8),
                     child: Text(
                       'Classes',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         color: currentState == classes
                             ? Colors.white
                             : Colors.black,
-                        fontSize: 20,
                       ),
                     ),
                   ),
                 ),
               ),
 
-              // Materals Button
+              // Materials Button
               Flexible(
                 flex: 1,
                 child: GestureDetector(
@@ -119,7 +148,35 @@ class _EnrolledCourseDetailsState extends State<EnrolledCourseDetails> {
                         color: currentState == materials
                             ? Colors.white
                             : Colors.black,
-                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Recorded Lectures Button
+              Flexible(
+                flex: 1,
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      currentState = currentState != recordedLectures
+                          ? recordedLectures
+                          : recordedLectures;
+                    });
+                  },
+                  child: Container(
+                    height: 50,
+                    alignment: Alignment.center,
+                    color: currentState == recordedLectures
+                        ? const Color(0xff007A70)
+                        : const Color(0xff30D5C8),
+                    child: Text(
+                      'Recorded Lectures',
+                      style: TextStyle(
+                        color: currentState == recordedLectures
+                            ? Colors.white
+                            : Colors.black,
                       ),
                     ),
                   ),
@@ -136,7 +193,9 @@ class _EnrolledCourseDetailsState extends State<EnrolledCourseDetails> {
                     ? MaterialsWidget(
                         courseName: widget.courseName,
                       )
-                    : Container(),
+                    : currentState == recordedLectures
+                        ? RecordedLecturesWidget(courseName: widget.courseName)
+                        : Container(),
           ),
         ],
       ),
