@@ -55,6 +55,11 @@ class EnrolledCourses extends StatelessWidget {
                         } else {
                           SystemNavigator.pop();
                         }
+                        if (Navigator.canPop(context)) {
+                          Navigator.pop(context);
+                        } else {
+                          SystemNavigator.pop();
+                        }
                       },
                       child: Container(
                         height: 50,
@@ -84,9 +89,20 @@ class EnrolledCourses extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             child: const Text(
-              'Enrolled Courses',
+              'Mohamed Sayed',
               style: TextStyle(
                 fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const Divider(),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: const Text(
+              'Enrolled Courses',
+              style: TextStyle(
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
