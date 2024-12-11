@@ -99,7 +99,7 @@ class _TutorLoginState extends State<TutorLogin> {
           ),
           GestureDetector(
             onTap: () {
-              if (emailController.text != 'zyad@school.com' &&
+              if (emailController.text != 'zyad@school.com' ||
                   idController.text != '123') {
                 showDialog(
                   context: context,
