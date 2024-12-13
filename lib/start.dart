@@ -72,6 +72,36 @@ class Start extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 50,
+            ),
+            GestureDetector(
+              onTap: () {
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //     builder: (context) => const TutorLogin()));
+              },
+              child: Material(
+                shadowColor: Colors.black,
+                elevation: 10.0,
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  height: 100,
+                  width: 300,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: const Text(
+                    'Log In As Admin',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
