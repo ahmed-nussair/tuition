@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tuition/admin_login.dart';
 import 'student_login.dart';
 import 'tutor_login.dart';
 
@@ -77,8 +78,8 @@ class Start extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                //     builder: (context) => const TutorLogin()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const AdminLogin()));
               },
               child: Material(
                 shadowColor: Colors.black,
