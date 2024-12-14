@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tuition/admin_screens/admin_start.dart';
 import 'package:tuition/start.dart';
 
 class AdminLogin extends StatefulWidget {
@@ -147,8 +148,8 @@ class _AdminLoginState extends State<AdminLogin> {
                 );
                 return;
               }
-              // Navigator.of(context).pushReplacement(MaterialPageRoute(
-              //     builder: (context) => const EnrolledCourses()));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => const AdminStart()));
             },
             child: Material(
               elevation: 10.0,
