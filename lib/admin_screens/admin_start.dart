@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tuition/admin_screens/register_new_tutor.dart';
 
 class AdminStart extends StatelessWidget {
   const AdminStart({super.key});
@@ -87,8 +88,8 @@ class AdminStart extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              // Navigator.of(context).pushReplacement(MaterialPageRoute(
-              //     builder: (context) => const StudentLogin()));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => const RegisterNewTutor()));
             },
             child: Material(
               shadowColor: Colors.black,
@@ -148,7 +149,7 @@ class AdminStart extends StatelessWidget {
           GestureDetector(
             onTap: () {
               // Navigator.of(context).pushReplacement(MaterialPageRoute(
-              //     builder: (context) => const TutorLogin()));
+              //     builder: (context) => const RegisterNewTutor()));
             },
             child: Material(
               shadowColor: Colors.black,
