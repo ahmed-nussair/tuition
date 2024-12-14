@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'admin_start.dart';
 
-class RegisterNewTutor extends StatefulWidget {
-  const RegisterNewTutor({super.key});
+class RegisterNewAdmin extends StatefulWidget {
+  const RegisterNewAdmin({super.key});
 
   @override
-  State<RegisterNewTutor> createState() => _RegisterNewTutorState();
+  State<RegisterNewAdmin> createState() => _RegisterNewAdminState();
 }
 
-class _RegisterNewTutorState extends State<RegisterNewTutor> {
+class _RegisterNewAdminState extends State<RegisterNewAdmin> {
+
   final nameController = TextEditingController();
   final emailController = TextEditingController();
 
@@ -50,7 +51,7 @@ class _RegisterNewTutorState extends State<RegisterNewTutor> {
           Container(
             alignment: Alignment.center,
             child: const Text(
-              'Registering New Tutor',
+              'Registering New Admin',
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -70,7 +71,7 @@ class _RegisterNewTutorState extends State<RegisterNewTutor> {
                 hintStyle: const TextStyle(
                   fontSize: 20,
                 ),
-                hintText: 'Tutor Name',
+                hintText: 'Name',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -87,7 +88,7 @@ class _RegisterNewTutorState extends State<RegisterNewTutor> {
                 hintStyle: const TextStyle(
                   fontSize: 20,
                 ),
-                hintText: 'Tutor Email',
+                hintText: 'Email',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -112,7 +113,7 @@ class _RegisterNewTutorState extends State<RegisterNewTutor> {
                           const Padding(
                             padding: EdgeInsets.all(20),
                             child: Text(
-                              'Please enter tutor name',
+                              'Please enter the name',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 20,
@@ -163,7 +164,7 @@ class _RegisterNewTutorState extends State<RegisterNewTutor> {
                           const Padding(
                             padding: EdgeInsets.all(20),
                             child: Text(
-                              'Please enter tutor email',
+                              'Please enter the email',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 20,
@@ -338,7 +339,7 @@ class _RegisterNewTutorState extends State<RegisterNewTutor> {
                   color: const Color(0xff007A70),
                 ),
                 child: const Text(
-                  'Register New Tutor',
+                  'Register New Admin',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -353,3 +354,4 @@ class _RegisterNewTutorState extends State<RegisterNewTutor> {
     );
   }
 }
+
