@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tuition/tutor_screens/class_screen.dart';
 
 class Classes extends StatelessWidget {
   const Classes({super.key});
@@ -121,19 +122,25 @@ class Classes extends StatelessWidget {
           Expanded(
             child: ListView(
               children: List.generate(classes.length, (index) {
-                return Container(
-                  alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: const Color(0xff007A70),
-                  ),
-                  child: Text(
-                    '${classes[index]['time']} - ${classes[index]['className']}',
-                    style: const TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => ClassScreen(classTitle: '${classes[index]['time']} - ${classes[index]['className']}',)));
+                  },
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: const Color(0xff007A70),
+                    ),
+                    child: Text(
+                      '${classes[index]['time']} - ${classes[index]['className']}',
+                      style: const TextStyle(
+                        fontSize: 25,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 );

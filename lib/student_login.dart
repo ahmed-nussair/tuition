@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tuition/start.dart';
 import 'package:tuition/student_screens/enrolled_courses.dart';
 
+import 'data/apis.dart';
+
 class StudentLogin extends StatefulWidget {
   const StudentLogin({super.key});
 
@@ -98,7 +100,7 @@ class _StudentLoginState extends State<StudentLogin> {
             height: 70,
           ),
           GestureDetector(
-            onTap: () {
+            onTap: () async {
               if (emailController.text != 'mohamed@school.com' ||
                   idController.text != '123') {
                 showDialog(
@@ -147,8 +149,10 @@ class _StudentLoginState extends State<StudentLogin> {
                 );
                 return;
               }
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => const EnrolledCourses()));
+
+              // final data = await studentLogin(emailController.text, int.parse(idController.text));
+              // print(data);
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const EnrolledCourses()));
             },
             child: Material(
               elevation: 10.0,
